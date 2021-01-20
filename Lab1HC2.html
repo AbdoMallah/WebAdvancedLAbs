@@ -34,10 +34,10 @@
                 aTag.innerText = h2Array[i].textContent
                 i++
             }
-			giveClassNameToSections()
+			giveIdToSections()
 			toggleSections(id)
 		})
-		function giveClassNameToSections(){
+		function giveIdToSections(){
 			const listOfSections = document.querySelectorAll("section")
 			const arrayLenght = listOfSections.length
 			let i = 0
