@@ -1,0 +1,83 @@
+<html lang="en"><head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lab 2 - Calculator</title>
+	<script>
+        document.addEventListener("DOMContentLoaded", function(){
+            var form = document.getElementById("calculatorForm")
+            form.addEventListener("submit", function(e){
+                e.preventDefault()
+                var operation = document.getElementById("operation").value
+                var operand1 = document.getElementById("operand1").value
+                var operand2 = document.getElementById("operand2").value
+                var result = document.getElementById("result")
+                var listOfOperand1 = []
+                var listOfOperand2 = []
+                var listOfResult = []
+                var listOfOperations = []
+                switch (operation){
+                case "add": 
+                    listOfOperand1.push(parseInt(operand1))
+                    listOfOperand2.push(parseInt(operand2))
+                    listOfOperations.push(operation)
+                    var value = parseInt(operand1) + parseInt(operand2)
+                    listOfResult.push(value)
+                    result.innerText = value
+                    break;
+                case "sub":
+                    listOfOperand1.push(parseInt(operand1))
+                    listOfOperand2.push(parseInt(operand2))
+                    listOfOperations.push(operation)
+                    var value = parseInt(operand1)  - parseInt(operand2)
+                    listOfResult.push(value)
+                    result.innerText = value
+                    break;
+                case "div":
+                    listOfOperand1.push(parseInt(operand1))
+                    listOfOperand2.push(parseInt(operand2))
+                    listOfOperations.push(operation)
+                    var value = parseInt(operand1)  / parseInt(operand2)
+                    listOfResult.push(value)
+                    result.innerText = value
+                    break;
+                case "mul":
+                    listOfOperand1.push(parseInt(operand1))
+                    listOfOperand2.push(parseInt(operand2))
+                    listOfOperations.push(operation.innerText)
+                    var value = parseInt(operand1)  * parseInt(operand2) 
+                    listOfResult.push(value)
+                    result.innerText = value
+                    break;
+                default:
+                    result.innerText = 0
+                }
+                var body = document.getElementsByTagName("body")
+                for(var i = 0; i < listOfResult.length; i += 1){
+                    var p = document.createElement("P")
+                    body[0].appendChild(p)
+                    p.innerHTML = listOfOperand1[i] + " " + listOfOperations[i] + " " + listOfOperand2[i] + " = " + listOfResult[i]
+                }
+            })
+		// Write your JavaScript code here.
+		// The result of the computation should be shown in the span element.
+		// Want a harder challenge? Also show a list with previously carried
+		// out operations and what the result was. Clicking on one of them,
+		// auto fills the form with that operation.
+        })
+	</script>
+</head>
+<body>
+	<h1>Calculator</h1>
+	<form id="calculatorForm" method="GET">
+		<input type="number" id="operand1" name="operand1">
+		<select id="operation" name="operation">
+			<option value="add">+</option>
+			<option value="sub">-</option>
+			<option value="mul">*</option>
+			<option value="div">/</option>
+		</select>
+		<input type="number" id="operand2" name="operand2">
+		<input type="submit" value="=">
+		<span id="result">?</span>
+	</form>
+</body></html>
