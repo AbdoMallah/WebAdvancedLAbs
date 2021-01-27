@@ -24,7 +24,7 @@
 			var linksTitles = ["\nCreate Account" , "\nSign In" , "\nSubscribe"]
 			var sections = document.getElementsByTagName("section")
 
-            for(var i = 0; i<3; i += 1){
+            for(var i = 0; i< sections.length; i += 1){
 				sections[i].style.display = "none"
 				sections[i].setAttribute("id", "section"+i)
 				links.push(document.createElement("a"))
@@ -34,19 +34,20 @@
 				links[i].setAttribute("name", ""+linksTitles[i])
 				links[i].setAttribute("onclick", "toggleSections('section"+(i)+"')")
 			}
-
-			toggleSections(sectionId)
-
-			
+			// toggleSections(sectionId)	
 		})
 	
 		function toggleSections(sectionId){
-				var i = document.getElementById(sectionId)
-				if(i.style.display === "block")
-					i.style.display = "none"
-				else
-					i.style.display = "block"
+			var sectionToShow = document.getElementById(sectionId)
+			var sections = document.getElementsByTagName("section")
+			for(var i = 0; i<sections.length; i += 1){
+				sections[i].style.display = "none"
 			}
+			if(sectionToShow.style.display === "block")
+				sectionToShow.style.display = "none"
+			else
+				sectionToShow.style.display = "block"
+		}
 		// Write your JavaScript code here.
 		
 	</script>

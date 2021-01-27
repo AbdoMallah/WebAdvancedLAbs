@@ -9,27 +9,25 @@
             form.addEventListener("submit", function(e){
                 e.preventDefault()
                 let operation = document.getElementById("operation").value
-                let operand1 = document.getElementById("operand1").value
+                let operand1 = paserdocument.getElementById("operand1").value
                 let operand2 = document.getElementById("operand2").value
                 let result = document.getElementById("result")
-                console.log(operation)
                 switch (operation){
-                case "add": 
-                    result.innerText = parseInt(operand1) + parseInt(operand2)
-                    break;
-                case "sub":
-                    result.innerText = parseInt(operand1)  - parseInt(operand2)
-                    break;
-                case "div":
-                    result.innerText = parseInt(operand1)  / parseInt(operand2)
-                    break;
-                case "mul":
-                    result.innerText = parseInt(operand1)  * parseInt(operand2) 
-                    break;
-                default:
-                    result.innerText = 0
+                    case "add": 
+                        result.innerText = parseInt(operand1) + parseInt(operand2)
+                        break;
+                    case "sub":
+                        result.innerText = parseInt(operand1)  - parseInt(operand2)
+                        break;
+                    case "div":
+                        result.innerText = parseInt(operand1)  / parseInt(operand2)
+                        break;
+                    case "mul":
+                        result.innerText = parseInt(operand1)  * parseInt(operand2) 
+                        break;
+                    default:
+                        result.innerText = 0
                 }
-                console.log(result)
             })
 		// Write your JavaScript code here.
 		// The result of the computation should be shown in the span element.

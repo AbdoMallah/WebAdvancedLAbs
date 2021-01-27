@@ -4,37 +4,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Lab 3 - Validating Forms</title>
 	<script>
-        document.addEventListener("DOMContentLoaded", function(){
-            var form = document.getElementById("createAccountForm")
-            var ul = document.createElement("ul")
-            var li = document.createElement("li")
-            var validationErrors = []
-            form.appendChild(ul)
-            form.addEventListener("submit", function(e){
-                e.preventDefault()
-                var enteredEmail = document.getElementById("email").value
-                var enteredPassword1 = document.getElementById("password1").value
-                var enteredPassword2 = document.getElementById("password2").value
-                console.log(enteredEmail + " -- " + enteredPassword1 + " -- "+enteredPassword2)
-                console.log(typeof enteredPassword2)
-                var validEmail = checkEmailIsValid(enteredEmail)
-                var validPasswords = checkPassword(enteredPassword1, enteredPassword2)
-                if(!validEmail && !validPasswords)
-                    validationErrors.push("The Email Is Not Valid & The Passwords Don't Match")
-                else if(!validEmail && validPasswords)
-                    validationErrors.push("The Email Is Not Valid")
-                else if(validEmail && !validPasswords)
-                    validationErrors.push("The Passwords Don't Match")
-                
-                if(validationErrors.length != 0){
-                    for(let i = 0; i < validationErrors.length; i += 1){
-                        ul.appendChild(li)
-                        li.innerText = validationErrors[i]
-                    }
-                }
-            })
-
-        })
         function checkEmailIsValid(email){
             if(email.includes("@"))
                 return true
@@ -43,9 +12,44 @@
         function checkPassword(password1, password2){
             if(password1 === password2){
                 if(password1.length == 8){ return true }
-            }else
-                return false
+            }
+            return false
         }
+        document.addEventListener("DOMContentLoaded", function(){
+            var form = document.getElementById("createAccountForm")
+            var ul = document.createElement("ul")
+          
+            form.appendChild(ul)
+            form.addEventListener("submit", function(){
+                while(ul.firstChild){
+                    ul.removeChild(ul.firstChild)
+                }
+                var validationErrors = []
+                var enteredEmail = document.getElementById("email").value
+                var enteredPassword1 = document.getElementById("password1").value
+                var enteredPassword2 = document.getElementById("password2").value
+                var validEmail = checkEmailIsValid(enteredEmail)
+                var validPasswords = checkPassword(enteredPassword1, enteredPassword2)
+
+                if(!validEmail){
+                    validationErrors.push("The Email Is Not Valid")
+                }
+                if(!validPasswords){
+                    validationErrors.push("The Passwords Don't Match")                    
+                }
+                if(validationErrors.length > 0){
+                    event.preventDefault()
+                    
+                    for(let i = 0; i < validationErrors.length; i += 1){
+                        var li = document.createElement("li")
+                        ul.appendChild(li)
+                        li.innerText = validationErrors[i]
+                    } 
+                }
+            })
+
+        })
+      
         //if(password1.lenght == 8 && password2.lenght == 8){ return true }
         // Write your JavaScript code here.
         // Display the error messages wherever you think it makes most sense.

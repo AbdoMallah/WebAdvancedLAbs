@@ -7,7 +7,6 @@
         document.addEventListener("DOMContentLoaded", function(){
             const h2Array = document.querySelectorAll("h2")
             const arrayLenght = h2Array.length
-            let liTagsList = []
             let i = 0
 
             const ulTag = document.createElement("UL") // Create UL Tag
@@ -18,9 +17,7 @@
                 ulTag.appendChild(liTag)
                 liTag.innerText = h2Array[i].textContent
                 i++
-             
             }
-          
         })
 
 		// Write your JavaScript code here that populates #tableOfContents with a <ul> which in turn contains one <li> for each <h2> below. DONE
